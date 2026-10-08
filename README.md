@@ -5,8 +5,8 @@ Three-week Python homework, tracked through this repo.
 ## Setup
 Prerequisites: Python 3.10+ (CI uses 3.12), Git.
 
-    git clone git@github.com:csc10014-team07/assistant-team07.git
-    cd assistant-team07
+    git clone git@github.com:tlkha06112007/python-bootcamp.git
+    cd python-bootcamp
     python -m venv .venv
     source .venv/bin/activate            # Windows: .venv\Scripts\Activate.ps1
     pip install pytest ruff
@@ -21,8 +21,8 @@ Run every command below from the **repo root**.
     # -> prints tonight's study plan (Week 3)
 
 ## Test
-    pytest -q python-bootcamp/tests/test_w1.py --member <your_folder> --variant <1-4>
-    ruff check python-bootcamp
+    pytest -q tests/test_w1.py --member <your_folder> --variant <1-4>
+    ruff check .
 
 ## Rules
 - Folder names use underscores: `minh_nv`, not `minh-nv`.
