@@ -6,3 +6,4 @@
 | Van-Huu-Phuc   |  w1  |   W1-1   | #13   |          |passed | 0.5  |
 | vthung2536     |  W1  |   W1-2   | #8    |          |passed | 1.5  | 
 | tmvuonghoang | w1 | W1-3 | #22  | mvuonghoang | passed (local) | 2 |
+| NhatQuang2007-Data | w1 | w1-6 | #21 |              |passed | 3 |
