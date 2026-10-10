@@ -5,3 +5,4 @@
 | khoavn1302     |  w1  |   W1-1   | #10   |          |passed | 1    |
 | Van-Huu-Phuc   |  w1  |   W1-1   | #13   |          |passed | 0.5  |
 | vthung2536     |  W1  |   W1-2   | #8    |          |passed | 1.5  | 
+| tmvuonghoang | w1 | W1-3 | Pending issue / PR | mvuonghoang | 9 local tests passed; member Ruff passed; instructor tests unavailable; repository Ruff blocked by existing errors | 2 |
