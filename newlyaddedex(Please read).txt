@@ -1,0 +1,71 @@
+CSC10014 - PYTHON BOOTCAMP - WEEK 1 EXTRA EXERCISES
+---------------------------------------------------------------------
+W1-6  Password checker   
+---------------------------------------------------------------------
+
+Write check_password(pw: str) -> list[str] that returns a list of
+human-readable problems, in this order: length, digit, uppercase,
+lowercase. An empty list means the password is fine.
+
+Rules:
+  - at least 8 characters
+  - at least one digit
+  - at least one uppercase letter
+  - at least one lowercase letter
+
+Then write is_strong(pw: str) -> bool, true if check_password finds
+no problems.
+
+>>> check_password("abc")
+['need at least 8 characters', 'need a digit', 'need an uppercase letter']
+>>> check_password("Secret123")
+[]
+>>> is_strong("secret123")
+False
+
+Hints:
+  - any(...) with a generator, for example any(c.isdigit() for c in pw)
+  - str methods: isdigit, isupper, islower
+  - reuse check_password inside is_strong (do not repeat the rules)
+
+Edge cases to test:
+  - empty string
+  - a password that breaks every rule
+  - exactly 8 characters
+
+---------------------------------------------------------------------
+W1-7  Stock manager      
+---------------------------------------------------------------------
+
+Write merge_stock(a: dict[str, int], b: dict[str, int]) -> dict[str, int]
+that adds the quantities of two stock dicts.
+  - Items that appear in only one dict keep their quantity.
+  - The result is sorted by item name.
+  - Do not modify a or b.
+
+Then write low_stock(stock: dict[str, int], limit: int) -> list[str]
+returning the names of items with quantity BELOW limit, sorted
+alphabetically.
+
+>>> merge_stock({"pen": 5, "book": 2}, {"pen": 3, "bag": 1})
+{'bag': 1, 'book': 2, 'pen': 8}
+>>> low_stock({'bag': 1, 'book': 2, 'pen': 8}, 3)
+['bag', 'book']
+
+Hints:
+  - b = a does NOT copy a dict in Python. Use a.copy() or dict(a).
+  - dict(sorted(d.items())) builds a dict sorted by key
+  - dict.get(key, 0) avoids an if/else when adding quantities
+
+Edge cases to test:
+  - both dicts empty
+  - one dict empty
+  - quantity exactly equal to limit (must NOT be listed)
+  - check that a and b are unchanged after merge_stock
+
+---------------------------------------------------------------------
+GRADING NOTE
+---------------------------------------------------------------------
+These two exercises have no instructor tests. Each author writes 3-5
+quick pytest checks of their own, and the reviewer reads them as part of
+the PR review.
