@@ -42,7 +42,7 @@ def transpose(matrix: list[list[int]]) -> list[list[int]]:
     return [list(row) for row in zip(*matrix)]
 
 
-def sieve(n: int) -> list[int]:
+def primes_up_to(n: int) -> list[int]:
     """Return all primes <= n.
 
     Difference from C++: slice assignment crosses off all multiples at
