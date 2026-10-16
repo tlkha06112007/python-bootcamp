@@ -3,6 +3,7 @@ class InfeasiblePlan(Exception):
 
     def __init__(self, needed_h: float, available_h: float):
         super().__init__()
+        self.needed_h = needed_h
         self.available_h = available_h
 
     def __str__(self) -> str:
