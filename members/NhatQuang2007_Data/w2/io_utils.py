@@ -6,7 +6,7 @@ from datetime import date
 from pathlib import Path
 from typing import Iterable
 
-from .models import Task
+from members.vthung2536.w2.models import Task
 
 _REQUIRED_COLUMNS = ("title", "importance", "effort_h", "deadline")
 
