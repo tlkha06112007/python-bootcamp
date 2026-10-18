@@ -1,9 +1,8 @@
 from datetime import date
- 
+
 import pytest
- 
 from models import Task
- 
+
 TODAY = date(2026, 10, 14)
  
  

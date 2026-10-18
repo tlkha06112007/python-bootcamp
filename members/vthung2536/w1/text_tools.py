@@ -1,6 +1,7 @@
 
 from collections import Counter
 
+
 def word_count(text: str) -> dict[str, int]:
     """Count words case-insensitively, ignoring punctuation."""
     punctuation = ".,!?;:"

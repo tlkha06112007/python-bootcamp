@@ -1,6 +1,6 @@
 import unittest
-import pytest
-from shared.contract import Block, Task
+
+from shared.contract import Task
 from shared.study_planner.allocate import allocate
 
 

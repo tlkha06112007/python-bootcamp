@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 import pytest
 
 from members.vhphuc.w2.errors import InfeasiblePlan, check_feasible

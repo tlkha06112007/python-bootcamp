@@ -2,6 +2,8 @@ import csv
 from datetime import date
 
 from shared.contract import Task
+
+
 def parse_csv(path) -> list[Task]:
     tasks = []
     with open(path, newline="", encoding="utf-8-sig") as f:
