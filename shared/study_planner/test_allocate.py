@@ -1,42 +1,37 @@
-import unittest
+from datetime import date
+
 import pytest
-from shared.contract import Block, Task
+
+from shared.contract import Task
 from shared.study_planner.allocate import allocate
 
 
-class TestAllocate(unittest.TestCase):
-
-    def setUp(self):
-        self.task1 = Task(name="Task 1", effort_h=2.0)
-        self.task2 = Task(name="Task 2", effort_h=3.0)
-        self.task3 = Task(name="Task 3", effort_h=5.0)
-
-    def test_allocate_sufficient_hours(self):
-        tasks = [self.task1, self.task2]
-        blocks = allocate(tasks, hours=10.0)
-
-        self.assertEqual(len(blocks), 2)
-        self.assertEqual(blocks[0].task, self.task1)
-        self.assertEqual(blocks[0].hours, 2.0)
-        self.assertEqual(blocks[1].task, self.task2)
-        self.assertEqual(blocks[1].hours, 3.0)
-
-    def test_allocate_partial_hours(self):
-        tasks = [self.task1, self.task2, self.task3]
-        blocks = allocate(tasks, hours=4.0)
-
-        self.assertEqual(len(blocks), 2)
-        self.assertEqual(blocks[0].hours, 2.0)
-        self.assertEqual(blocks[1].hours, 2.0)
-
-    def test_allocate_zero_or_negative_hours(self):
-        tasks = [self.task1]
-        self.assertEqual(allocate(tasks, hours=0.0), [])
-        self.assertEqual(allocate(tasks, hours=-5.0), [])
-
-    def test_allocate_empty_tasks(self):
-        self.assertEqual(allocate([], hours=10.0), [])
+def make(title: str, effort_h: float) -> Task:
+    return Task(title, 3, effort_h, date(2026, 10, 30))
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_enough_hours_gives_every_task_its_full_time():
+    a, b = make("a", 2.0), make("b", 3.0)
+    blocks = allocate([a, b], 10.0)
+    assert [(bl.task, bl.hours) for bl in blocks] == [(a, 2.0), (b, 3.0)]
+
+
+def test_last_task_gets_only_the_remaining_hours():
+    a, b, c = make("a", 2.0), make("b", 3.0), make("c", 5.0)
+    blocks = allocate([a, b, c], 4.0)
+    assert [(bl.task, bl.hours) for bl in blocks] == [(a, 2.0), (b, 2.0)]
+
+
+def test_pdf_example_two_hours():
+    hw, exam = make("Assignment", 1.5), make("DS exam", 6.0)
+    blocks = allocate([hw, exam], 2.0)
+    assert [bl.hours for bl in blocks] == pytest.approx([1.5, 0.5])
+
+
+def test_zero_or_negative_hours_gives_no_blocks():
+    assert allocate([make("a", 2.0)], 0.0) == []
+    assert allocate([make("a", 2.0)], -5.0) == []
+
+
+def test_empty_tasks():
+    assert allocate([], 10.0) == []
