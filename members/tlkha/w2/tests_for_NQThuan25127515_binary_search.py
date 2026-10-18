@@ -1,6 +1,6 @@
 import pytest
 
-from members.NQThuan25127515.w1.translate import binary_search 
+from members.NQThuan25127515.w1.translate import binary_search
 
 
 def test_duplicates_returns_a_valid_index():

@@ -1,0 +1,4 @@
+﻿extend-exclude = ["tests"]
+
+[lint.per-file-ignores]
+"members/**/tests_for_*.py" = ["N999"]

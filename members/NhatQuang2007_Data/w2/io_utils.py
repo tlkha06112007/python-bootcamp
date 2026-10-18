@@ -1,10 +1,10 @@
 """CSV loading and JSON saving helpers for Week 2."""
 import csv
 import json
+from collections.abc import Iterable
 from dataclasses import asdict
 from datetime import date
 from pathlib import Path
-from typing import Iterable
 
 from members.vthung2536.w2.models import Task
 
