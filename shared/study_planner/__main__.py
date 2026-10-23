@@ -1,6 +1,6 @@
 import argparse
+from collections.abc import Sequence
 from datetime import date
-from typing import Sequence
 
 from shared.study_planner.allocate import allocate
 from shared.study_planner.parse import parse_csv
