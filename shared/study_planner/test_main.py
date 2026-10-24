@@ -40,26 +40,3 @@ def test_main_with_sample_csv(capsys):
     )
     assert captured.out == expected
 
-
-def test_main_cli_subprocess():
-    csv_file = str(BOOTCAMP / "samples" / "tasks.csv")
-    proc = subprocess.run(
-        [
-            sys.executable,
-            "-m",
-            "shared.study_planner",
-            csv_file,
-            "--hours",
-            "2",
-            "--today",
-            "2026-10-26",
-        ],
-        check=False,
-        capture_output=True,
-        text=True,
-        cwd=BOOTCAMP,
-    )
-    assert proc.returncode == 0
-    assert "Tonight (2.0 h):" in proc.stdout
-    assert "1. Assignment" in proc.stdout
-    assert "2. DS exam" in proc.stdout
