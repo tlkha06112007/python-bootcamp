@@ -55,3 +55,23 @@ def test_future_task_can_be_split(tmp_path):
     assert result.returncode == 0
     assert result.stderr == ""
     assert result.stdout == "Tonight (2.0 h):\n1. Assignment ...... 2.0 h\n"
+
+
+@pytest.mark.parametrize("deadline", ["2026-10-25", "2026-10-26"])
+@pytest.mark.parametrize("hours", [2, 3])
+def test_due_task_before_future_task(tmp_path, deadline, hours):
+    path = tmp_path / "tasks.csv"
+    path.write_text(
+        HEADER + f"Due,1,2,{deadline}\nFuture,5,3,2026-10-27\n",
+        encoding="utf-8",
+    )
+
+    result = run_cli(path, hours)
+    assert result.returncode == 0
+    assert result.stderr == ""
+    if hours == 2:
+        assert result.stdout == "Tonight (2.0 h):\n1. Due ...... 2.0 h\n"
+    else:
+        assert result.stdout == (
+            "Tonight (3.0 h):\n1. Due ......... 2.0 h\n2. Future ...... 1.0 h\n"
+        )

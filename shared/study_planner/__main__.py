@@ -56,7 +56,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"Error: infeasible plan: {e}", file=sys.stderr)
         return 1
 
-    print(render(allocate(prioritise(tasks, args.today), args.hours)))
+    future = [t for t in tasks if t.deadline > args.today]
+    ordered = prioritise(due_now, args.today) + prioritise(future, args.today)
+    print(render(allocate(ordered, args.hours)))
     return 0
 
 
