@@ -1,7 +1,12 @@
 # AI use log
 
+- 2026-10-24 — TW3-3, tmvuonghoang: Codex hỗ trợ chạy test, kiểm tra
+  xử lý lỗi CLI, sửa lỗi import và lỗi phân bổ task đến hạn,
+  bổ sung test hồi quy và giải quyết xung đột với main.
+
 - 2026-10-24 — W3-2, tmvuonghoang: Codex hỗ trợ chạy test và kiểm tra lỗi
-  cho `members/khoavn1302/w3/log_stats.py`.
+  cho `members/khoavn1302/w3/log_stats.py`. File test này đã được xóa
+  ở commit f716aea vì đã có thành viên khác làm.
 
 - 2026-10-24 — W3-2 (Việc 5), tmvuonghoang: Codex assisted with writing
   25 pytest cases for `members/vhphuc/w3/dates.py`, running the new tests
