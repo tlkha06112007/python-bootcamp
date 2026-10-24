@@ -1,7 +1,7 @@
 import argparse
+import sys
 from collections.abc import Sequence
 from datetime import date
-import sys
 
 from members.vhphuc.w2.errors import InfeasiblePlan, check_feasible
 from shared.study_planner.allocate import allocate

@@ -1,5 +1,8 @@
 # AI use log
 
+- 2026-10-24 — TW3-3, tmvuonghoang: Codex hỗ trợ chạy test, kiểm tra
+  xử lý lỗi CLI và sửa lỗi import do Ruff báo.
+
 - 2026-10-15 — TW2-4, tmvuonghoang: Codex assisted with `render(blocks)`,
   package initialization, and local verification against the duo guide.
   The teammate's `tests/test_render.py` will be added later on the same branch
