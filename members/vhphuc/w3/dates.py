@@ -1,6 +1,8 @@
 from datetime import date, datetime, timedelta
 
+
 def parse_due(text: str, today: date) -> date:
+    """Parse a due-date phrase into a date, relative to today."""
     try:
         return datetime.strptime(text, "%Y-%m-%d").date()
     except ValueError:
