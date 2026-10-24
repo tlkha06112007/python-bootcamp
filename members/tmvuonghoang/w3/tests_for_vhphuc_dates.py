@@ -1,21 +1,17 @@
-"""Test Phuc's W3 dates parser using fixed reference dates."""
-
 from datetime import date
 
 import pytest
 
 from members.vhphuc.w3.dates import parse_due
 
-TODAY = date(2026, 10, 6)  # Tuesday
+TODAY = date(2026, 10, 6)
 
 
 def test_iso_date() -> None:
-    """An explicit date does not depend on today."""
     assert parse_due("2026-10-30", TODAY) == date(2026, 10, 30)
 
 
 def test_tomorrow() -> None:
-    """Tomorrow is the following calendar day."""
     assert parse_due("tomorrow", TODAY) == date(2026, 10, 7)
 
 
@@ -28,7 +24,6 @@ def test_tomorrow() -> None:
     ],
 )
 def test_relative_days(text: str, expected: date) -> None:
-    """The supported 'in N days' form adds N days."""
     assert parse_due(text, TODAY) == expected
 
 
@@ -45,7 +40,6 @@ def test_relative_days(text: str, expected: date) -> None:
     ],
 )
 def test_each_weekday(weekday: str, expected: date) -> None:
-    """Each weekday resolves to its next occurrence."""
     assert parse_due(weekday, TODAY) == expected
 
 
@@ -55,17 +49,14 @@ def test_each_weekday(weekday: str, expected: date) -> None:
      ("Fri", 9), ("Sat", 10), ("Sun", 11)],
 )
 def test_same_weekday_means_next_week(weekday: str, day: int) -> None:
-    """A matching weekday must advance seven days, never return today."""
     assert parse_due(weekday, date(2026, 10, day)) == date(2026, 10, day + 7)
 
 
 @pytest.mark.parametrize("text", ["in 1 day", "FRI", "2026-13-40", "", "someday"])
 def test_invalid_text(text: str) -> None:
-    """Unsupported forms and invalid dates raise ValueError."""
     with pytest.raises(ValueError):
         parse_due(text, TODAY)
 
 
 def test_tomorrow_crosses_year_boundary() -> None:
-    """Tomorrow after December 31 is January 1 of the next year."""
     assert parse_due("tomorrow", date(2026, 12, 31)) == date(2027, 1, 1)
