@@ -1,6 +1,5 @@
 
 from collections import Counter
-import string
 
 
 def word_count(text: str) -> dict[str, int]:
