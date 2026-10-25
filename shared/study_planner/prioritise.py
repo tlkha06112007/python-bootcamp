@@ -4,10 +4,12 @@ from shared.contract import Task
 
 
 def days_left(task: Task, today: date) -> int:
+    """Return days until the deadline (0 if already due)."""
     return max((task.deadline - today).days, 0)
 
 
 def score(task: Task, today: date) -> float:
+    """Return urgency: importance divided by days left."""
     # max(..., 1) tránh chia cho 0 khi task đến hạn hôm nay hoặc đã quá hạn
     return task.importance / max(days_left(task, today), 1)
 

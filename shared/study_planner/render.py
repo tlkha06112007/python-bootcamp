@@ -2,6 +2,7 @@ from shared.contract import Block
 
 
 def render(blocks: list[Block]) -> str:
+    """Format the study blocks as a plain-text plan."""
     total = sum(b.hours for b in blocks)
     lines = [f"Tonight ({total:.1f} h):"]
     names = [f"{i}. {b.task.title}" for i, b in enumerate(blocks, 1)]

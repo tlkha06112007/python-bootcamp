@@ -6,6 +6,7 @@ SAMPLE = Path(__file__).resolve().parents[3] / "samples" / "tasks.csv"
 
 
 def main() -> None:
+    """Print every task loaded from the sample CSV."""
     for task in load_tasks(SAMPLE):
         print(task)
 

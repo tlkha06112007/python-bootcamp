@@ -1,4 +1,5 @@
 ﻿def check_password(pw: str) -> list[str]:
+    """Return the list of rules the password breaks (empty if none)."""
     problems = []
 
     if len(pw) < 8:
@@ -17,4 +18,5 @@
 
 
 def is_strong(pw: str) -> bool:
+    """Return True if the password breaks no rule."""
     return len(check_password(pw)) == 0

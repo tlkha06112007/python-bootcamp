@@ -1,10 +1,12 @@
 import csv
 from datetime import date
+from pathlib import Path
 
 from shared.contract import Task
 
 
-def parse_csv(path) -> list[Task]:
+def parse_csv(path: str | Path) -> list[Task]:
+    """Read tasks from a CSV file; raise ValueError on a bad row."""
     tasks = []
     with open(path, newline="", encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
