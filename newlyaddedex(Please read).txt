@@ -63,9 +63,3 @@ Edge cases to test:
   - quantity exactly equal to limit (must NOT be listed)
   - check that a and b are unchanged after merge_stock
 
----------------------------------------------------------------------
-GRADING NOTE
----------------------------------------------------------------------
-These two exercises have no instructor tests. Each author writes 3-5
-quick pytest checks of their own, and the reviewer reads them as part of
-the PR review.
