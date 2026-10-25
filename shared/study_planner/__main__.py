@@ -11,6 +11,7 @@ from shared.study_planner.render import render
 
 
 def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
+    """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
         description="Study Planner - Lập kế hoạch học tập buổi tối từ file CSV"
     )
@@ -34,6 +35,7 @@ def parse_args(args: Sequence[str] | None = None) -> argparse.Namespace:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    """Run the planner and return the process exit code."""
     args = parse_args(argv)
 
     try:

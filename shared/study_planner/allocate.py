@@ -2,6 +2,7 @@ from shared.contract import Block, Task
 
 
 def allocate(tasks: list[Task], hours: float) -> list[Block]:
+    """Fill the available hours with tasks in the given order."""
     blocks = []
     remain = float(hours)
 
