@@ -1,7 +1,7 @@
 class InfeasiblePlan(Exception):
     """Exception raised when the total effort required exceeds the available time."""
 
-    def __init__(self, needed_h: float, available_h: float):
+    def __init__(self, needed_h: float, available_h: float) -> None:
         super().__init__()
         self.needed_h = needed_h
         self.available_h = available_h
