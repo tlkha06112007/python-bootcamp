@@ -1,4 +1,5 @@
 def summary(scores: list[float]) -> dict:
+    """Return min, max, mean and median of the scores."""
     if not scores:
         raise ValueError("Error !")
 
